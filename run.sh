@@ -10,11 +10,11 @@ if [ "$PWD" = "/root"* ]; then
 fi
 
 printf "\033c"
-printf "${GREEN}╭─────────────────────────────────────────────╮${NC}\n"
+printf "${GREEN}╭──────────────────╮${NC}\n"
 printf "${GREEN}│                     │${NC}\n"
 printf "${GREEN}│   Coldhost.eu VPS   │${NC}\n"
 printf "${GREEN}│                     │${NC}\n"
-printf "${GREEN}╰─────────────────────────────────────────────╯${NC}\n"
+printf "${GREEN}╰──────────────────╯${NC}\n"
 printf "                                                                                               \n"
 printf "root@coldhost:${DIR}#                                                                             \n"
 
