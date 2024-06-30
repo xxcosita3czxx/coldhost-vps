@@ -38,4 +38,4 @@ RUN chmod +x /entrypoint.sh
 RUN echo "* * * * * /usr/local/bin/traffic_monitor.sh" | sudo crontab -u container -
 
 # Start cron and the entrypoint script
-CMD ["sudo", "cron", "-f", "&&", "/bin/bash", "/entrypoint.sh"]
+CMD "cron", "-f", "&&", "/bin/bash", "/entrypoint.sh"]
