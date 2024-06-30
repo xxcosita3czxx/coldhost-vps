@@ -28,11 +28,11 @@ WORKDIR /
 
 # Copy the traffic monitoring script
 COPY ./traffic_monitor.sh /usr/local/bin/traffic_monitor.sh
-RUN sudo chmod +x /usr/local/bin/traffic_monitor.sh
+RUN chmod +x /usr/local/bin/traffic_monitor.sh
 
 # Create the entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh
-RUN sudo chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Set up the cron job
 RUN echo "* * * * * /usr/local/bin/traffic_monitor.sh" | sudo crontab -u container -
