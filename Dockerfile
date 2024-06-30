@@ -4,16 +4,38 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends bash curl ca-certificates iproute2 xz-utils bzip2 sudo adduser \
+    && apt-get install -y --no-install-recommends \
+        bash \
+        curl \
+        ca-certificates \
+        iproute2 \
+        xz-utils \
+        bzip2 \
+        sudo \
+        adduser \
+        ifstat \
+        iptables \
+        cron \
+        bc \
     && rm -rf /var/lib/apt/lists/*
 
-RUN adduser --disabled-password --home / container
+RUN adduser --disabled-password --home /container container
 
 USER container
-ENV  USER container
+ENV USER container
 ENV HOME /
 WORKDIR /
 
-COPY ./entrypoint.sh /entrypoint.sh
+# Copy the traffic monitoring script
+COPY ./traffic_monitor.sh /usr/local/bin/traffic_monitor.sh
+RUN sudo chmod +x /usr/local/bin/traffic_monitor.sh
 
-CMD ["/bin/bash", "/entrypoint.sh"]
+# Create the entrypoint script
+COPY ./entrypoint.sh /entrypoint.sh
+RUN sudo chmod +x /entrypoint.sh
+
+# Set up the cron job
+RUN echo "* * * * * /usr/local/bin/traffic_monitor.sh" | sudo crontab -u container -
+
+# Start cron and the entrypoint script
+CMD ["sudo", "cron", "-f", "&&", "/bin/bash", "/entrypoint.sh"]
