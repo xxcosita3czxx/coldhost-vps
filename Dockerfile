@@ -31,7 +31,6 @@ COPY ./traffic_monitor.sh /usr/local/bin/traffic_monitor.sh
 
 # Create the entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
 # Start cron and the entrypoint script
 CMD ["/bin/bash", "/entrypoint.sh"]
