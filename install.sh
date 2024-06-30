@@ -37,9 +37,8 @@ if [ ! -e "$ROOTFS_DIR/.installed" ]; then
   printf "\033c"
   echo "${GREEN}╭────────────────────────────────────────────────────────────────────────────────╮${NC}"
   echo "${GREEN}│                                                                                │${NC}"
-  echo "${GREEN}│                             Pterodactyl VPS EGG                                │${NC}"
+  echo "${GREEN}│                             Coldhost.eu VPS                                    │${NC}"
   echo "${GREEN}│                                                                                │${NC}"
-  echo "${GREEN}│                           ${RED}© 2021 - 2024 ${PURPLE}ysdragon${GREEN}                               │${NC}"
   echo "${GREEN}│                                                                                │${NC}"
   echo "${GREEN}╰────────────────────────────────────────────────────────────────────────────────╯${NC}"
   echo "                                                                                               "
@@ -367,7 +366,7 @@ fi
 #################################
 
 # Download run.sh
-curl -Ls "https://raw.githubusercontent.com/ysdragon/Pterodactyl-VPS-Egg/main/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
+curl -Ls "https://raw.githubusercontent.com/xxcosita3czxx/coldhost-vps/main/run.sh" -o "$ROOTFS_DIR/home/container/run.sh"
 # Make run.sh executable.
 chmod +x "$ROOTFS_DIR/home/container/run.sh"
 
